@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Logowanie</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form">
+            <div class="header">
+                <h1>Zaloguj się</h1> </div>
+            <div class="inputs">
+                <input type="email" name="userid" placeholder="Adres e-mail" />
+                <input type="password" id="password" name="psw" placeholder="Hasło" />
+                <div id="button">
+                    <div class="button" onclick="sendInf()">Log in</div>
+                    <div class="button" onClick="checkIn()">Log up</div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    function checkIn() {
+        window.location.href = 'LogUp.html';
+    }
+    Cookies.remove('login');
+    Cookies.remove('haslo');
+    Cookies.remove('id_uzytkownika');
+    Cookies.get('login');
+
+    function sendInf() {
+        var login = document.getElementById('login').value;
+        var pass = document.getElementById('password').value;
+        var obj = {
+            email: login
+            , haslo: pass
+        };
+        $.ajax({
+            type: "POST", //url: ,
+            dataType: 'json'
+            , data: JSON.stringify(obj)
+            , success: function (data) {
+                if (data.error == 1) {
+                    alert('Nieprawidlowe haslo/login');
+                }
+                else if (data.id) {
+                    Cookies.set('login', login);
+                    Cookies.set('haslo', pass);
+                    Cookies.set('id_uzytkownika', data.id);
+                    alert('Zostałes zalogowany');
+                    if (data.typ == 'pacient') {
+                        window.location.href = "pacient.html";
+                    }
+                    else if (data.typ == 'admin') {
+                        window.location.href = "admin.html";
+                    }
+                    else {
+                        window.location.href = "admin/main_adm.html";
+                    }
+                }
+                else {
+                    alert('Nieprawidlowe haslo lub login!');
+                }
+            }
+            , complete: function () {
+                console.log("COMPLETED")
+            }
+            , error: function () {
+                console.log("Wystąpił błąd w połączeniu 😞");
+            }
+        });
+    }
+</script>
+
+</html>
