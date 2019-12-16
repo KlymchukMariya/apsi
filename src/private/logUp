@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Rejestracja</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form">
+            <div class="header">
+                <h1>Zarejestruj się</h1> </div>
+            <div class="logUp">
+                <div class="inputs">
+                    <input type="name" placeholder="Podaj imie" />
+                    <input type="lastname" placeholder="Nazwisko" />
+                    <input type="email" placeholder="Adres e-mail" />
+                    <input type="repeatEmail" placeholder="Powtórz e-mail" />
+                    <input type="password" id="password" placeholder="Hasło" />
+                    <input type="password" id="repeatpass"
+                    placeholder="Powtórz hasło"/>
+                    <div id="button">
+                        <div class="button" onclick="sendRejestracja()" style="width: 80%">Log up</div>
+                    </div>
+                </div>
+                <div class="header">
+                    <p> Klikając przycisk Log Up,akceptujesz nasz Regulamin oraz potwierdzasz zapoznanie się z Zasadami dotyczącymi danych. </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    function sendLogUp() {
+        var obj = {
+            email: document.getElementById('email').value
+            , imie: document.getElementById('name').value
+            , nazwisko: document.getElementById('lastname').value
+            , haslo: document.getElementById('password').value
+        };
+        $.ajax({
+            type: "POST",
+            //url:
+            , dataType: 'json',
+            data: JSON.stringify(obj)
+            , success: function (data) {
+                if (data.error == 0) {
+                    alert('Jestesz zalogowany! Potwierdz swoj e-mail');
+                    window.location.href = 'Logowanie.html';
+                }
+                else if (data.error != 0) {
+                    alert('Something is wrong');
+                }
+            }
+            , complete: function () {
+                console.log("COMPLETED");
+            }
+            , error: function () {
+                console.log("Wystąpił błąd w połączeniu 😞");
+            }
+        });
+    }
+</script>
+
+</html>
