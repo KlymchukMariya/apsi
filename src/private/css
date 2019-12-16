@@ -1,0 +1,147 @@
+body {
+    background: url(jpg/img.jpg);
+   background-size: cover;
+    background-repeat: repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+
+.container {
+    width: 406px;
+    max-width: 406px;
+    margin: auto;
+}
+
+#form {
+    padding: 5px 25px 25px;
+    background: #FFF;
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(50, 89, 99, 1);
+    box-shadow: 0px 0px 20px 5px rgba(50, 89, 99, 1);
+    display: table;
+    margin-top: 10%;
+    border-radius: 10px;
+}
+
+.header {
+    margin-bottom: 5px;
+}
+
+.header h1 {
+    color: #000;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #8e8888;
+    margin: 3px;
+    font-size: 14px;
+    font-weight: 250;
+    text-align: center;
+}
+
+.header p1 {
+    color: #8e8888;
+    margin: 0px;
+    font-size: 12px;
+    font-weight: 250;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    padding: 5px 5px;
+    color: dimgrey;
+}
+
+:-ms-input-placeholder {
+    padding: 5px 5px;
+    color: dimgrey;
+}
+
+.inputs [type] {
+    background: #F9F9F4;
+    width: 95%;
+    height: 35px;
+    margin: 10px 0px 2px 0px;
+    font-size: 0.8 rem;
+    border-radius: 20px;
+    padding: 8px 8px;
+    -webkit-box-shadow: inset 0px 2px 3px rgba(0.0.0.1);
+    box-shadow: inset 0px 2px 3px rgba(0.0.0.1);
+}
+
+.button {
+    width: 30%;
+    background-color: #2e2ebe;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    margin: 10px 2px;
+    cursor: pointer;
+}
+
+.own-footer {
+    padding: 2px 0;
+    background: linear-gradient(#f3f4fa, #161ee8);
+    font-weight: bold;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    position: fixed;
+}
+
+.dropbtn {
+    background-color: aliceblue;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+     border-radius: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display:flex;
+    background-color: aliceblue;
+    min-width: 100%;
+margin: -7px;
+}
+
+.content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #032d7b;
+    color: white;
+}
+
+.show {
+    display: block;
+}
